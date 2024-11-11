@@ -1,6 +1,6 @@
 # Blockchain-Papildoma
 # Pirma užduotis
-# Blockchain
+
 
 Visų pirma atsisiunčiau Visual Studio 2017 ir 2022 (su 2013 ir 2015 versija buvo problemų instaliuojant, kurių nepavyko išspręsti).
 ![image](https://github.com/user-attachments/assets/7fc7905a-6f21-418e-aba9-772be8365e4e)
