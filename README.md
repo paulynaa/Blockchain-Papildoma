@@ -123,10 +123,14 @@ Per Project Properties pakeičiu standartą iš default c++14 į c++20:
 
 Po šio pakeitimo tas pats erroras nedingo, tik prisidėjo 80 naujų klaidų.
 
+![image](https://github.com/user-attachments/assets/9ac5bed8-8cc4-48fb-a0a0-094d71e0ece7)
+
 cmd
 wsl --install
 
 Atidarom Ubuntu
+
+![image](https://github.com/user-attachments/assets/75a4d099-047f-4c74-8e24-de198889dd2a)
 
 
 
