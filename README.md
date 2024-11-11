@@ -123,6 +123,10 @@ Per Project Properties pakeičiu standartą iš default c++14 į c++20:
 
 Po šio pakeitimo tas pats erroras nedingo, tik prisidėjo 80 naujų klaidų.
 
+cmd
+wsl --install
+
+Atidarom Ubuntu
 
 
 
