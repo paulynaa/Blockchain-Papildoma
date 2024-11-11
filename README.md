@@ -132,6 +132,10 @@ Atidarom Ubuntu
 
 ![image](https://github.com/user-attachments/assets/75a4d099-047f-4c74-8e24-de198889dd2a)
 
+paleidau ./install.sh --prefix=/home/paulina/myprefix --build-boost --disable-shared
+![image](https://github.com/user-attachments/assets/28dced59-ddd2-4b15-8231-f17bf96789c0)
+
+![image](https://github.com/user-attachments/assets/04969fcf-4db0-4a2d-a035-248e187e27cd)
 
 
 
