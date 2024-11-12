@@ -387,17 +387,25 @@ else:
 ```
 </details>
 Patikrinimui naudoju atsitiktinį bloką pvz. su šiuo hashu : 
+
 Hashas bloko : 00000000000000000001ca0902ec8a2abbc16637ef61659c5e7d30418e6a1950
 
 Šio bloko turiniui gauti rašau komandą : bitcoin-cli getblockheader "hashas"
+
 Tokį turinį gaunu:
 
 Version : 537346048
+
 Merkle Root Hash : c4e8db0cdbef44042b1c76b23dafa0a1d19118a1d326f4b4c64884aa3295722e
+
 Timestamp : 1731441020
+
 Nonce : 98137976
+
 Bits : 0x1702c4e4
+
 Prev block hash : 000000000000000000026bed0a517f047ff6153438ee4095f931bebb4c5fa307
+
   
 ![image](https://github.com/user-attachments/assets/a3521871-e2ae-4922-8386-962f1a2b8e03)
 
