@@ -152,6 +152,10 @@ datadir...
 Kelios dešimtys bandymų rodyti direktorijas konfiguracijos failuose, reindeksuoti iš naujo, daryti "Free up space" One Drive folderyje buvo nesėkmingi, vis susidurdavau su naujom problemom pvz.: "Errors reading from database" arba "Bitcoin Network error" ir t.t.
 
 
+![image](https://github.com/user-attachments/assets/e22fcdd7-3131-4e9e-81eb-e65d7a8d3e43)
+
+
+
 
 # Trečia papildoma
 
