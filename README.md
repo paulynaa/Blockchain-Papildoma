@@ -1,4 +1,3 @@
-# Blockchain-Papildoma
 # Pirma užduotis
 
 
@@ -172,17 +171,26 @@ Prisijungiame prie VU bitcoin mazgo per PuTTY: 158.129.140.201:3536
 Įrašau pip install python-bitcoinlib:
 
 
-![image](https://github.com/user-attachments/assets/8f8a4ae1-e581-4abf-b2fe-654aa24698b0)
+![image](https://github.com/user-attachments/assets/09d4e456-8ec0-4132-a8b2-852c0e663e3b)
 
- Dabar galime tęsti.
+
+Dabar galime tęsti.
 
  ## Bandymas su pavyzdžiais
 
  Terminale suvedame : nano rpc_example.py
+ 
  Įklijuojame pateiktą kodą: 
+
+
+ ![image](https://github.com/user-attachments/assets/1f9e4cff-e098-4153-8be9-beae499dadab)
+
+
 <details>
 	<summary>Peržiūrėti rpc_example.py</summary>
-	
+
+ ```
+
 from bitcoin.rpc import RawProxy
 # Create a connection to local Bitcoin Core node
 p = RawProxy()
@@ -190,6 +198,8 @@ p = RawProxy()
 info = p.getblockchaininfo()
 # Retrieve the 'blocks' element from the info
 print(info['blocks'])
+```
+
 </details>
 
 Spaudžiame Ctrl + x :
@@ -198,19 +208,21 @@ Spaudžiame Ctrl + x :
 
 Įrašome Y ir spaudžiame Enter.
 
-![image](https://github.com/user-attachments/assets/1f9e4cff-e098-4153-8be9-beae499dadab)
 
 Programos paleidimui suvedame : python3 rpc_example.py
+
 Gauname atsakymą:
 
 ![image](https://github.com/user-attachments/assets/4d95a5ab-96eb-4726-9ebe-cd0afa805183)
 
 
-Kartojame tuos pačius žingsnius su rpc_transaction.py ir rpc_block.py pavyzdžiais:
+Kartojame tuos pačius žingsnius su <ins> rpc_transaction.py </ins> ir  <ins> rpc_block.py </ins> pavyzdžiais:
 
 
 <details>
 		<summary>Peržiūrėti rpc_transaction.py</summary>
+	
+```
 from bitcoin.rpc import RawProxy
 # Create a connection to local Bitcoin Core node
 p = RawProxy()
@@ -223,6 +235,8 @@ decoded_tx = p.decoderawtransaction(raw_tx)
 # Retrieve each of the outputs from the transaction
 for output in decoded_tx['vout']:
  print(output['scriptPubKey']['address'], output['value'])
+```
+
 </details>
 
 Atsakymas:
@@ -232,32 +246,27 @@ Atsakymas:
 
 <details>
 		<summary>Peržiūrėti rpc_block.py</summary>
+
+```
+
 from bitcoin.rpc import RawProxy
-# Create a connection to local Bitcoin Core node
 p = RawProxy()
-# The block height where Alice's transaction was recorded
 blockheight = 277316
-# Get the block hash of block with height 277316
 blockhash = p.getblockhash(blockheight)
-# Retrieve the block by its hash
 block = p.getblock(blockhash)
-# Element tx contains the list of all transaction IDs in the block
 transactions = block['tx']
 block_value = 0
-# Iterate through each transaction ID in the block
 for txid in transactions:
  tx_value = 0
- # Retrieve the raw transaction by ID
  raw_tx = p.getrawtransaction(txid)
- # Decode the transaction
  decoded_tx = p.decoderawtransaction(raw_tx)
- # Iterate through each output in the transaction
  for output in decoded_tx['vout']:
- # Add up the value of each output
  	tx_value = tx_value + output['value']
- # Add the value of this transaction to the total
  block_value = block_value + tx_value
 print("Total output value (in BTC) in block #277316: ", block_value)
+
+```
+
 </details>
 
 Atsakymas:
@@ -285,6 +294,8 @@ Pridėjau programą, kuri apskaičiuoja Bitcoin transakcijos mokestį pagal jos 
 
 <details>
 	<summary>Peržiūrėti programą</summary>
+	
+```
 from bitcoin.rpc import RawProxy
 p = RawProxy()
 txid = "84e3eea9920092343ae000931a002b8225ecea919fbe452d33080676d042021f"
@@ -300,6 +311,8 @@ for vin in decoded_tx['vin']:
 total_output = sum(output['value'] for output in decoded_tx['vout'])
 tx_mokestis = total_input - total_output
 print(f"Transakcijos mokestis: {tx_mokestis} BTC")
+```
+
 </details>
 
 Patikriname pvz.:
@@ -318,12 +331,15 @@ Mano outputas:
 
 
 Išbandau programą su 2019-09-06 įvykusia viena vertingiausių transakcija:
+
 Transakcijos hash : 4410c8d14ff9f87ceeed1d65cb58e7c7b2422b2d7529afc675208ce2ce09ed7d
+
 Outputas : 0.00004389 BTC
 
 Mano outputas:
     
 ![image](https://github.com/user-attachments/assets/608e8bbe-2774-4510-b77b-13b5713fd5be)
+
 
 ## Bloko hash'o patikrinimas
 
