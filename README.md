@@ -159,17 +159,27 @@ Kelios dešimtys bandymų rodyti direktorijas konfiguracijos failuose, reindeksu
 
 # Trečia papildoma
 
- 158.129.140.201:3536
+Prisijungiame prie VU bitcoin mazgo per PuTTY: 158.129.140.201:3536
 
- ## python-bitcoinlib
+ ## Diegimas python-bitcoinlib
  VU mazge turėtų būti įdiegta python-bitcoinlib biblioteka, bet rodoma klaida:
  neatpažintas "bitcoin", todėl pabandome įdiegti:
 
 
+![image](https://github.com/user-attachments/assets/d2b69927-310a-41f7-b2dd-a66c771e616c)
+
+
+Įrašau pip install python-bitcoinlib:
+
+
+![image](https://github.com/user-attachments/assets/8f8a4ae1-e581-4abf-b2fe-654aa24698b0)
+
  Dabar galime tęsti.
 
  ## Bandymas su pavyzdžiais
- 
+
+ Terminale suvedame : nano rpc_example.py
+ Įklijuojame pateiktą kodą: 
 <details>
 	<summary>Peržiūrėti rpc_example.py</summary>
 	
@@ -182,19 +192,21 @@ info = p.getblockchaininfo()
 print(info['blocks'])
 </details>
 
-ctr x
+Spaudžiame Ctrl + x :
 
 ![image](https://github.com/user-attachments/assets/e8927d91-50b0-4ea6-8e53-4384dbace83d)
 
+Įrašome Y ir spaudžiame Enter.
+
 ![image](https://github.com/user-attachments/assets/1f9e4cff-e098-4153-8be9-beae499dadab)
 
+Programos paleidimui suvedame : python3 rpc_example.py
+Gauname atsakymą:
 
-![image](https://github.com/user-attachments/assets/d2b69927-310a-41f7-b2dd-a66c771e616c)
+![image](https://github.com/user-attachments/assets/4d95a5ab-96eb-4726-9ebe-cd0afa805183)
 
 
-pip install python-bitcoinlib
-
-![image](https://github.com/user-attachments/assets/8f8a4ae1-e581-4abf-b2fe-654aa24698b0)
+Kartojame tuos pačius žingsnius su rpc_transaction.py ir rpc_block.py pavyzdžiais:
 
 
 <details>
@@ -213,7 +225,10 @@ for output in decoded_tx['vout']:
  print(output['scriptPubKey']['address'], output['value'])
 </details>
 
+Atsakymas:
+
  ![image](https://github.com/user-attachments/assets/a9178714-89cb-4c0a-b2cd-4ccb2bbbd42d)
+
 
 <details>
 		<summary>Peržiūrėti rpc_block.py</summary>
@@ -245,8 +260,12 @@ for txid in transactions:
 print("Total output value (in BTC) in block #277316: ", block_value)
 </details>
 
+Atsakymas:
+
 ![image](https://github.com/user-attachments/assets/e895b43d-351f-49a7-9a0e-52ff3280c6e0)
 
+
+Kaip veikia?
 
 Naudodami RawProxy siunčiame įvairias užklausas, pvz.:
 
@@ -258,6 +277,7 @@ Naudodami RawProxy siunčiame įvairias užklausas, pvz.:
 ir kt.
 
 Šie metodai leidžia gauti išsamią informaciją apie blockchain būklę ir atlikti operacijas su Bitcoin transakcijomis tiesiogiai python programos.
+
 
 ## Apskaičiuojamas transakcijos mokestis
 
