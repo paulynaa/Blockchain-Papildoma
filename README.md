@@ -159,5 +159,79 @@ Kelios dešimtys bandymų rodyti direktorijas konfiguracijos failuose, reindeksu
 
 # Trečia papildoma
 
+ 158.129.140.201:3536
+ 
+
+from bitcoin.rpc import RawProxy
+# Create a connection to local Bitcoin Core node
+p = RawProxy()
+# Run the getblockchaininfo command, store the resulting data in info
+info = p.getblockchaininfo()
+# Retrieve the 'blocks' element from the info
+print(info['blocks'])
+
+ctr x
+
+![image](https://github.com/user-attachments/assets/e8927d91-50b0-4ea6-8e53-4384dbace83d)
+
+![image](https://github.com/user-attachments/assets/1f9e4cff-e098-4153-8be9-beae499dadab)
+
+
+![image](https://github.com/user-attachments/assets/d2b69927-310a-41f7-b2dd-a66c771e616c)
+
+
+pip install python-bitcoinlib
+
+![image](https://github.com/user-attachments/assets/8f8a4ae1-e581-4abf-b2fe-654aa24698b0)
+
+
+
+from bitcoin.rpc import RawProxy
+# Create a connection to local Bitcoin Core node
+p = RawProxy()
+# Alice's transaction ID
+txid = "0627052b6f28912f2703066a912ea577f2ce4da4caa5a5fbd8a57286c345c2f2"
+# First, retrieve the raw transaction in hex
+raw_tx = p.getrawtransaction(txid)
+# Decode the transaction hex into a JSON object
+decoded_tx = p.decoderawtransaction(raw_tx)
+# Retrieve each of the outputs from the transaction
+for output in decoded_tx['vout']:
+ print(output['scriptPubKey']['address'], output['value'])
+
+
+ ![image](https://github.com/user-attachments/assets/a9178714-89cb-4c0a-b2cd-4ccb2bbbd42d)
+
+from bitcoin.rpc import RawProxy
+# Create a connection to local Bitcoin Core node
+p = RawProxy()
+# The block height where Alice's transaction was recorded
+blockheight = 277316
+# Get the block hash of block with height 277316
+blockhash = p.getblockhash(blockheight)
+# Retrieve the block by its hash
+block = p.getblock(blockhash)
+# Element tx contains the list of all transaction IDs in the block
+transactions = block['tx']
+block_value = 0
+# Iterate through each transaction ID in the block
+for txid in transactions:
+ tx_value = 0
+ # Retrieve the raw transaction by ID
+ raw_tx = p.getrawtransaction(txid)
+ # Decode the transaction
+ decoded_tx = p.decoderawtransaction(raw_tx)
+ # Iterate through each output in the transaction
+ for output in decoded_tx['vout']:
+ # Add up the value of each output
+ 	tx_value = tx_value + output['value']
+ # Add the value of this transaction to the total
+ block_value = block_value + tx_value
+print("Total output value (in BTC) in block #277316: ", block_value)
+
+
+![image](https://github.com/user-attachments/assets/e895b43d-351f-49a7-9a0e-52ff3280c6e0)
+
+
 
 
