@@ -160,8 +160,19 @@ Kelios dešimtys bandymų rodyti direktorijas konfiguracijos failuose, reindeksu
 # Trečia papildoma
 
  158.129.140.201:3536
- 
 
+ ## python-bitcoinlib
+ VU mazge turėtų būti įdiegta python-bitcoinlib biblioteka, bet rodoma klaida:
+ neatpažintas "bitcoin", todėl pabandome įdiegti:
+
+
+ Dabar galime tęsti.
+
+ ## Bandymas su pavyzdžiais
+ 
+<details>
+	<summary>Peržiūrėti rpc_example.py</summary>
+	
 from bitcoin.rpc import RawProxy
 # Create a connection to local Bitcoin Core node
 p = RawProxy()
@@ -169,6 +180,7 @@ p = RawProxy()
 info = p.getblockchaininfo()
 # Retrieve the 'blocks' element from the info
 print(info['blocks'])
+</details>
 
 ctr x
 
@@ -185,7 +197,8 @@ pip install python-bitcoinlib
 ![image](https://github.com/user-attachments/assets/8f8a4ae1-e581-4abf-b2fe-654aa24698b0)
 
 
-
+<details>
+		<summary>Peržiūrėti rpc_transaction.py</summary>
 from bitcoin.rpc import RawProxy
 # Create a connection to local Bitcoin Core node
 p = RawProxy()
@@ -198,10 +211,12 @@ decoded_tx = p.decoderawtransaction(raw_tx)
 # Retrieve each of the outputs from the transaction
 for output in decoded_tx['vout']:
  print(output['scriptPubKey']['address'], output['value'])
-
+</details>
 
  ![image](https://github.com/user-attachments/assets/a9178714-89cb-4c0a-b2cd-4ccb2bbbd42d)
 
+<details>
+		<summary>Peržiūrėti rpc_block.py</summary>
 from bitcoin.rpc import RawProxy
 # Create a connection to local Bitcoin Core node
 p = RawProxy()
@@ -228,10 +243,69 @@ for txid in transactions:
  # Add the value of this transaction to the total
  block_value = block_value + tx_value
 print("Total output value (in BTC) in block #277316: ", block_value)
-
+</details>
 
 ![image](https://github.com/user-attachments/assets/e895b43d-351f-49a7-9a0e-52ff3280c6e0)
 
+
+Naudodami RawProxy siunčiame įvairias užklausas, pvz.:
+
+ - getblockcount() – grąžina dabartinį blokų aukštį.
+ - getblockhash(height) – grąžina bloko hash pagal aukštį.
+ - getblock(hash) – grąžina bloko informaciją pagal hash.
+ - getrawtransaction(txid) – grąžina transakcijos informaciją pagal ID.
+ - decoderawtransaction(raw_tx) – iškoduoja neapdorotą transakciją.
+ir kt.
+
+Šie metodai leidžia gauti išsamią informaciją apie blockchain būklę ir atlikti operacijas su Bitcoin transakcijomis tiesiogiai python programos.
+
+## Apskaičiuojamas transakcijos mokestis
+
+Pridėjau programą, kuri apskaičiuoja Bitcoin transakcijos mokestį pagal jos hash'ą:
+
+<details>
+	<summary>Peržiūrėti programą</summary>
+from bitcoin.rpc import RawProxy
+p = RawProxy()
+txid = "84e3eea9920092343ae000931a002b8225ecea919fbe452d33080676d042021f"
+raw_tx = p.getrawtransaction(txid)
+decoded_tx = p.decoderawtransaction(raw_tx)
+total_input = 0
+for vin in decoded_tx['vin']:
+ input_txid = vin['txid']
+ input_vout = vin['vout']
+ raw_input_tx = p.getrawtransaction(input_txid)
+ decoded_input_tx = p.decoderawtransaction(raw_input_tx)
+ total_input += decoded_input_tx['vout'][input_vout]['value']
+total_output = sum(output['value'] for output in decoded_tx['vout'])
+tx_mokestis = total_input - total_output
+print(f"Transakcijos mokestis: {tx_mokestis} BTC")
+</details>
+
+Patikriname pvz.:
+
+https://www.blockchain.com/explorer/blocks/btc/868177
+
+Panaudoju šį hash : 84e3eea9920092343ae000931a002b8225ecea919fbe452d33080676d042021f
+
+Outputas turėtų būti : 0.00004389 BTC
+
+![image](https://github.com/user-attachments/assets/93e89a5c-ef1b-4ff5-9168-ace9f1f99f1c)
+
+Mano outputas:
+
+![image](https://github.com/user-attachments/assets/4d1e7d90-94e1-43f8-93a5-fb31a501ba0e)
+
+
+Išbandau programą su 2019-09-06 įvykusia viena vertingiausių transakcija:
+Transakcijos hash : 4410c8d14ff9f87ceeed1d65cb58e7c7b2422b2d7529afc675208ce2ce09ed7d
+Outputas : 0.00004389 BTC
+
+Mano outputas:
+    
+![image](https://github.com/user-attachments/assets/608e8bbe-2774-4510-b77b-13b5713fd5be)
+
+## Bloko hash'o patikrinimas
 
 
 
