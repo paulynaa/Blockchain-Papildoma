@@ -41,7 +41,7 @@ Kartojame tas pačias instrukcijas su cmd. Atlikus šiuos veiksmus outputas buvo
 
 
 
-Dabar galime kurti jau savo programas su <bitcoin/bitcoin.hpp< biblioteka.
+Dabar galime kurti jau savo programas su <bitcoin/system.hpp< biblioteka.
 
 Sukūrę naują failą Visual Stuio nurodome per Project Properties - Include Additional directories kelią iki bitcoin.hpp failo
 
@@ -124,47 +124,65 @@ Po šio pakeitimo tas pats erroras nedingo, tik prisidėjo 80 naujų klaidų.
 
 ![image](https://github.com/user-attachments/assets/9ac5bed8-8cc4-48fb-a0a0-094d71e0ece7)
 
-cmd
-wsl --install
-
-Atidarom Ubuntu
+Nebuvo prasmės tęsti per Windowsus to padaryti, todėl nusprendžiau parsisiųsti WSL:
+Per cmd įrašiau : wsl --install
+Jeigu viskas įvyko sėkmingai, atidarom Ubuntu, kuris turi susiinstaliuoti, suvedam username ir password:
 
 ![image](https://github.com/user-attachments/assets/75a4d099-047f-4c74-8e24-de198889dd2a)
 
-paleidau ./install.sh --prefix=/home/paulina/myprefix --build-boost --disable-shared
-![image](https://github.com/user-attachments/assets/28dced59-ddd2-4b15-8231-f17bf96789c0)
-
-![image](https://github.com/user-attachments/assets/04969fcf-4db0-4a2d-a035-248e187e27cd)
-
-
-
+Bandymai daryti pagal instrukcijas arba per VSCode terminalą pajungus WSL buvo nesėkmingi, mesdavo 20, kartais 30 erroru, nors viskas buvo daroma pagal instrukcijas arba su kolegų pagalba.
 
 ![image](https://github.com/user-attachments/assets/775fec57-932b-4b03-9a88-f722a8e58c69)
 
+Po kelių dešimčių nesėkmingų bandymų ištryniau visus folderius libbitcoino ir bandžiau dar kartą.
 
-git clone https://github.com/libbitcoin/libbitcoin-system.git
+Štai šie žingsniai išsprendė problemą: 
+Atidarome terminalą WSL ir įrašome: 
+
+ - git clone https://github.com/libbitcoin/libbitcoin-system.git
 
 
-sudo apt-get install build-essential autoconf automake libtool pkg-config git
+Turi sėkmingai susiinstaliuoti.
 
-wget https://raw.githubusercontent.com/libbitcoin/libbitcoin/version3/install.sh
-$ chmod +x install.sh
+Toliau:
 
-./install.sh --prefix=/home/paulina/myprefix --build-boost --disable-shared
+ - sudo apt-get install build-essential autoconf automake libtool pkg-config git
 
- export PKG_CONFIG_PATH=/home/paulina/myprefix/lib/pkgconfig:$PKG_CONFIG_PATH
+ - wget https://raw.githubusercontent.com/libbitcoin/libbitcoin/version3/install.sh
+   
+ - chmod +x install.sh
+
+ - ./install.sh --prefix=/home/paulina/myprefix --build-boost --disable-shared
+
+  - export PKG_CONFIG_PATH=/home/paulina/myprefix/lib/pkgconfig:$PKG_CONFIG_PATH
  
- pkg-config --cflags --libs libbitcoin-system
+  - pkg-config --cflags --libs libbitcoin-system
+
+Tokį rezultatą turėtumėte pamatyti:
 
  ![image](https://github.com/user-attachments/assets/14424ee5-4c80-40b8-9556-32592a6b461e)
 
  
-clang++ -std=c++11 -o bitcoin_test merkle.cpp $(pkg-config --cflags --libs libbitcoin-system)
+ - clang++ -std=c++11 -o bitcoin_test merkle.cpp $(pkg-config --cflags --libs libbitcoin-system)
+
+Gavau error'ą, dėl kurio negalėjau paleisti programos:
+
 ![image](https://github.com/user-attachments/assets/0da5a9ef-cb94-4910-b892-715d34584769)
 
-padejo  clang++ -std=c++11 -Wno-enum-constexpr-conversion -o bitcoin_test merkle.cpp $(pkg-config --cflags --libs libbitcoin-system)
+Problemą išsprendė:
+
+ - clang++ -std=c++11 -Wno-enum-constexpr-conversion -o bitcoin_test merkle.cpp $(pkg-config --cflags --libs libbitcoin-system)
+
+Dabar rodo tik daug warning'ų, bet nėra nei vieno error'o, todėl galima bandyti paleisti kodą: 
+- ./bitcoin_test
+
+Štai tokį rezultatą gaunu:
 
 ![image](https://github.com/user-attachments/assets/7a7ca7ca-1c77-43c1-928f-71a6635faedc)
+
+## Pakeičiam testo duomenis
+
+
 
 
 # Antra papildoma
