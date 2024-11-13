@@ -207,17 +207,28 @@ Gaunu tokį atsakymą:
 # Antra papildoma
 https://bitcoincore.org/en/download/
 
+Spaudžiame Download.
 ![image](https://github.com/user-attachments/assets/f0f73129-efbf-4825-98f9-c485c432a4e8)
+
+Susiinstaliavus paleidau *.exe failą, prieš tai pakeitus konfiguracijos failus, kad Bitcoin Core neužimtų vietos mano lokaliame diske, kadangi neturiu teik laisvos vietos.
 
 ![image](https://github.com/user-attachments/assets/48e675a4-0baa-4825-b941-62210542df65)
 
-Error reading from database
-datadir...
-„Bitcoin Core“ veikia lokaliai, nes jam būtina nuolatinė ir greita prieiga prie visų blokų grandinės duomenų, o tai su debesijos saugykla būtų neįmanoma. Debesyje saugomi duomenys reikalauja sinchronizacijos, todėl juos pasiekti yra lėčiau ir nepatikimiau, o tai stabdytų ir trukdytų „Bitcoin Core“ veiklai.
-Kelios dešimtys bandymų rodyti direktorijas konfiguracijos failuose, reindeksuoti iš naujo, daryti "Free up space" One Drive folderyje buvo nesėkmingi, vis susidurdavau su naujom problemom pvz.: "Errors reading from database" arba "Bitcoin Network error" ir t.t.
+
+
+„Bitcoin Core“ veikia lokaliai, nes jam būtina nuolatinė ir greita prieiga prie visų blokų grandinės duomenų, o tai su cloud'o saugykla būtų neįmanoma. Debesyje saugomi duomenys reikalauja sinchronizacijos, todėl juos pasiekti yra lėčiau ir nepatikimiau, o tai stabdytų ir trukdytų „Bitcoin Core“ veiklai.
+
+Kelios dešimtys bandymų rodyti direktorijas konfiguracijos failuose, reindeksuoti iš naujo, daryti "Free up space" One Drive folderyje buvo nesėkmingi, vis susidurdavau su naujom problemom pvz.: "Error reading from database" arba "Bitcoin Network error" ir t.t.
+
+Nusprendžiau pasinaudoti disku, ir įrašyti į jį:
 
 
 ![image](https://github.com/user-attachments/assets/e22fcdd7-3131-4e9e-81eb-e65d7a8d3e43)
+
+
+Štai taip atrodo blokų siuntimo procesas:
+
+![image](https://github.com/user-attachments/assets/2df889b6-4deb-494f-a76a-a0007fa2b4f3)
 
 
 
