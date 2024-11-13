@@ -1,6 +1,7 @@
 # Pirma užduotis
 
 
+## Windows
 Visų pirma atsisiunčiau Visual Studio 2017 ir 2022 (su 2013 ir 2015 versija buvo problemų instaliuojant, kurių nepavyko išspręsti).
 ![image](https://github.com/user-attachments/assets/7fc7905a-6f21-418e-aba9-772be8365e4e)
 
@@ -8,6 +9,7 @@ Visų pirma atsisiunčiau Visual Studio 2017 ir 2022 (su 2013 ir 2015 versija bu
 Toliau naudojau githubo linką iš pateiktos papildomos užduoties aprašymo :
 
 https://github.com/libbitcoin/libbitcoin-system
+
 Kopijuoju nuorodą ir cmd įrašau :
 
 ![image](https://github.com/user-attachments/assets/e536954e-5932-45d0-92a6-778d4fb38f7d)
@@ -37,7 +39,8 @@ Spaudžiame New ir pridedame kelią iki nuget.exe.
 
 Kartojame tas pačias instrukcijas su cmd. Atlikus šiuos veiksmus outputas buvo sekantis:
 
-![image](https://github.com/user-attachments/assets/8b797702-976c-49ee-93f0-23c95d41a454)
+![image](https://github.com/user-attachments/assets/10872d21-43bc-496b-af32-61526d526592)
+
 
 
 
@@ -122,13 +125,20 @@ Per Project Properties pakeičiu standartą iš default c++14 į c++20:
 
 Po šio pakeitimo tas pats erroras nedingo, tik prisidėjo 80 naujų klaidų.
 
-![image](https://github.com/user-attachments/assets/9ac5bed8-8cc4-48fb-a0a0-094d71e0ece7)
+
+## WSL
+
+![image](https://github.com/user-attachments/assets/4f0ab898-a325-41c2-88bc-d9ad425aed50)
+
 
 Nebuvo prasmės tęsti per Windowsus to padaryti, todėl nusprendžiau parsisiųsti WSL:
 Per cmd įrašiau : wsl --install
 Jeigu viskas įvyko sėkmingai, atidarom Ubuntu, kuris turi susiinstaliuoti, suvedam username ir password:
 
-![image](https://github.com/user-attachments/assets/75a4d099-047f-4c74-8e24-de198889dd2a)
+
+![image](https://github.com/user-attachments/assets/1d6f2691-7445-4598-85ab-edcec3ef283d)
+
+
 
 Bandymai daryti pagal instrukcijas arba per VSCode terminalą pajungus WSL buvo nesėkmingi, mesdavo 20, kartais 30 erroru, nors viskas buvo daroma pagal instrukcijas arba su kolegų pagalba.
 
@@ -182,6 +192,15 @@ Dabar rodo tik daug warning'ų, bet nėra nei vieno error'o, todėl galima bandy
 
 ## Pakeičiam testo duomenis
 
+Įrašau terminale nano merkle.cpp ir galiu keisti failą.
+
+Pakeičiu į šias transakcijas:
+
+![image](https://github.com/user-attachments/assets/2fcaa100-de08-474d-8f56-166b6d11fbd4)
+
+Gaunu tokį atsakymą:
+
+![image](https://github.com/user-attachments/assets/843e705a-5eb1-41b3-abda-975e7e75958e)
 
 
 
