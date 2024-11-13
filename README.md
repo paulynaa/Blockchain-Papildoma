@@ -207,7 +207,9 @@ Gaunu tokį atsakymą:
 # Antra papildoma
 https://bitcoincore.org/en/download/
 
+
 Spaudžiame Download.
+
 ![image](https://github.com/user-attachments/assets/f0f73129-efbf-4825-98f9-c485c432a4e8)
 
 Susiinstaliavus paleidau *.exe failą, prieš tai pakeitus konfiguracijos failus, kad Bitcoin Core neužimtų vietos mano lokaliame diske, kadangi neturiu teik laisvos vietos.
