@@ -1,0 +1,15 @@
+from bitcoin.rpc import RawProxy
+p = RawProxy()
+txid = "84e3eea9920092343ae000931a002b8225ecea919fbe452d33080676d042021f"
+raw_tx = p.getrawtransaction(txid)
+decoded_tx = p.decoderawtransaction(raw_tx)
+total_input = 0
+for vin in decoded_tx['vin']:
+ input_txid = vin['txid']
+ input_vout = vin['vout']
+ raw_input_tx = p.getrawtransaction(input_txid)
+ decoded_input_tx = p.decoderawtransaction(raw_input_tx)
+ total_input += decoded_input_tx['vout'][input_vout]['value']
+total_output = sum(output['value'] for output in decoded_tx['vout'])
+tx_mokestis = total_input - total_output
+print(f"Transakcijos mokestis: {tx_mokestis} BTC")
