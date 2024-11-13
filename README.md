@@ -372,7 +372,7 @@ ir kt.
 Pridėjau programą, kuri apskaičiuoja Bitcoin transakcijos mokestį pagal jos hash'ą:
 
 <details>
-	<summary>Peržiūrėti programą</summary>
+	<summary>Peržiūrėti programą rpc_hash.py</summary>
 	
 ```
 from bitcoin.rpc import RawProxy
@@ -426,7 +426,7 @@ Parašiau programą, kuri patikrina ar bloko hashas buvo teisingai apskaičiuota
 
 <details>
 
-<summary>Peržiūrėti programą</summary>
+<summary>Peržiūrėti programą rpc_pat.py</summary>
 
 ```
 
