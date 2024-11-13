@@ -138,6 +138,35 @@ paleidau ./install.sh --prefix=/home/paulina/myprefix --build-boost --disable-sh
 
 
 
+
+![image](https://github.com/user-attachments/assets/775fec57-932b-4b03-9a88-f722a8e58c69)
+
+
+git clone https://github.com/libbitcoin/libbitcoin-system.git
+
+
+sudo apt-get install build-essential autoconf automake libtool pkg-config git
+
+wget https://raw.githubusercontent.com/libbitcoin/libbitcoin/version3/install.sh
+$ chmod +x install.sh
+
+./install.sh --prefix=/home/paulina/myprefix --build-boost --disable-shared
+
+ export PKG_CONFIG_PATH=/home/paulina/myprefix/lib/pkgconfig:$PKG_CONFIG_PATH
+ 
+ pkg-config --cflags --libs libbitcoin-system
+
+ ![image](https://github.com/user-attachments/assets/14424ee5-4c80-40b8-9556-32592a6b461e)
+
+ 
+clang++ -std=c++11 -o bitcoin_test merkle.cpp $(pkg-config --cflags --libs libbitcoin-system)
+![image](https://github.com/user-attachments/assets/0da5a9ef-cb94-4910-b892-715d34584769)
+
+padejo  clang++ -std=c++11 -Wno-enum-constexpr-conversion -o bitcoin_test merkle.cpp $(pkg-config --cflags --libs libbitcoin-system)
+
+![image](https://github.com/user-attachments/assets/7a7ca7ca-1c77-43c1-928f-71a6635faedc)
+
+
 # Antra papildoma
 https://bitcoincore.org/en/download/
 
