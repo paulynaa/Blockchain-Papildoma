@@ -357,11 +357,12 @@ Kaip veikia?
 
 Naudodami RawProxy siunčiame įvairias užklausas, pvz.:
 
- - getblockcount() – grąžina dabartinį blokų aukštį.
- - getblockhash(height) – grąžina bloko hash pagal aukštį.
+ - getblockcount() – grąžina dabartinį bloko numeri.
+ - getblockhash(height) – grąžina bloko hash pagal numerį.
  - getblock(hash) – grąžina bloko informaciją pagal hash.
  - getrawtransaction(txid) – grąžina transakcijos informaciją pagal ID.
  - decoderawtransaction(raw_tx) – iškoduoja neapdorotą transakciją.
+ - 
 ir kt.
 
 Šie metodai leidžia gauti išsamią informaciją apie blockchain būklę ir atlikti operacijas su Bitcoin transakcijomis tiesiogiai python programos.
