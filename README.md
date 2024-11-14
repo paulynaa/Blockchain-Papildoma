@@ -412,9 +412,13 @@ Mano outputas:
 
 Išbandau programą su 2019-09-06 įvykusia viena vertingiausių transakcija:
 
+![image](https://github.com/user-attachments/assets/469aa323-3111-477d-ad01-b23e80d1c164)
+
+
+
 Transakcijos hash : 4410c8d14ff9f87ceeed1d65cb58e7c7b2422b2d7529afc675208ce2ce09ed7d
 
-Outputas : 0.00004389 BTC
+Outputas : 0.06534852 BTC
 
 Mano outputas:
     
